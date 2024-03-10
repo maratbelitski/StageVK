@@ -12,4 +12,12 @@ object ProductRepositoryImpl : ProductRepository {
     override fun getAllProducts(product: Int, limit:Int): Single<ServerResponse>? {
         return api.loadProducts(product,limit)
     }
+
+    override fun getAllCategories(): Single<MutableList<String>>? {
+        return api.loadCategories()
+    }
+
+    override fun getOneCategory(category: String): Single<ServerResponse>? {
+        return api.loadOneCategory(category)
+    }
 }

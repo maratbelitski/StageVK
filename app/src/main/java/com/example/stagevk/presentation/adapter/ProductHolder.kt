@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.stagevk.domain.entities.Product
+import com.example.stagevk.domain.entities.ListItems
 import com.example.stagevk.databinding.ProductItemBinding
+import com.example.stagevk.domain.entities.Product
 
 class ProductHolder(private val binding: ProductItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -18,7 +19,7 @@ class ProductHolder(private val binding: ProductItemBinding) :
         }
     }
 
-    fun binding(product: Product, click: ((Product) -> Unit)?) {
+    fun bind(product: Product, click: ((Product) -> Unit)?) {
         with(binding) {
             Glide.with(itemView.context)
                 .load(product.thumbnail)

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.example.stagevk.R
 import com.example.stagevk.databinding.FragmentDetailBinding
@@ -84,105 +85,84 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivDetailTitle.text = title.toString()
-        binding.tvDetailDescription.text = description.toString()
-        binding.tvDetailRating.text = rating.toString()
-        binding.tvDetailBrand.text = brand.toString()
-        binding.tvDetailCategory.text = category.toString()
-        binding.tvDetailPrice.text = price.toString()
+        initTextView()
+        initImage()
+        doListeners()
+    }
 
-        binding.imageView2.setOnClickListener {
-            val fragment = ImageFragment.newInstance(images?.get(0))
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.addToBackStack(null)
-                ?.replace(R.id.container_main, fragment)
-                ?.commit()
-        }
-
-        binding.imageView3.setOnClickListener {
-            val fragment = ImageFragment.newInstance(images?.get(1))
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.addToBackStack(null)
-                ?.replace(R.id.container_main, fragment)
-                ?.commit()
-        }
-
-        binding.imageView4.setOnClickListener {
-            val fragment = ImageFragment.newInstance(images?.get(2))
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.addToBackStack(null)
-                ?.replace(R.id.container_main, fragment)
-                ?.commit()
-        }
-
-        binding.imageView5.setOnClickListener {
-            val fragment = ImageFragment.newInstance(images?.get(3))
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.addToBackStack(null)
-                ?.replace(R.id.container_main, fragment)
-                ?.commit()
-        }
-
-        Glide.with(view.context)
+    private fun initImage() {
+        Glide.with(binding.ivDetailImage)
             .load(image)
             .into(binding.ivDetailImage)
 
         if (images?.size!! == 1) {
-            binding.imageView2.visibility = View.VISIBLE
+            initImageDetail(binding.imageView2, 0)
 
-            Glide.with(view.context)
-                .load(images?.get(0))
-                .into(binding.imageView2)
         } else if (images?.size!! == 2) {
-            binding.imageView2.visibility = View.VISIBLE
-            binding.imageView3.visibility = View.VISIBLE
-
-            Glide.with(view.context)
-                .load(images?.get(0))
-                .into(binding.imageView2)
-
-            Glide.with(view.context)
-                .load(images?.get(1))
-                .into(binding.imageView3)
-
+            with(binding) {
+                initImageDetail(imageView2, 0)
+                initImageDetail(imageView3, 1)
+            }
         } else if (images?.size!! == 3) {
-            binding.imageView2.visibility = View.VISIBLE
-            binding.imageView3.visibility = View.VISIBLE
-            binding.imageView4.visibility = View.VISIBLE
-
-            Glide.with(view.context)
-                .load(images?.get(0))
-                .into(binding.imageView2)
-
-            Glide.with(view.context)
-                .load(images?.get(1))
-                .into(binding.imageView3)
-
-            Glide.with(view.context)
-                .load(images?.get(2))
-                .into(binding.imageView4)
-
+            with(binding) {
+                initImageDetail(imageView2, 0)
+                initImageDetail(imageView3, 1)
+                initImageDetail(imageView4, 2)
+            }
         } else if (images?.size!! == 4) {
-            binding.imageView2.visibility = View.VISIBLE
-            binding.imageView3.visibility = View.VISIBLE
-            binding.imageView4.visibility = View.VISIBLE
-            binding.imageView5.visibility = View.VISIBLE
+            with(binding) {
+                initImageDetail(imageView2, 0)
+                initImageDetail(imageView3, 1)
+                initImageDetail(imageView4, 2)
+                initImageDetail(imageView5, 3)
+            }
+        }
+    }
 
-            Glide.with(view.context)
-                .load(images?.get(0))
-                .into(binding.imageView2)
+    private fun initImageDetail(view: ImageView, index: Int) {
+        view.visibility = View.VISIBLE
 
-            Glide.with(view.context)
-                .load(images?.get(1))
-                .into(binding.imageView3)
+        Glide.with(view.context)
+            .load(images?.get(index))
+            .into(view)
+    }
 
-            Glide.with(view.context)
-                .load(images?.get(2))
-                .into(binding.imageView4)
+    private fun doListeners() {
+        with(binding) {
+            imageView2.setOnClickListener {
+                loadFragment(0)
+            }
 
-            Glide.with(view.context)
-                .load(images?.get(3))
-                .into(binding.imageView5)
+            imageView3.setOnClickListener {
+                loadFragment(1)
+            }
+
+            imageView4.setOnClickListener {
+                loadFragment(2)
+            }
+
+            imageView5.setOnClickListener {
+                loadFragment(3)
+            }
+        }
+    }
+
+    private fun loadFragment(index: Int) {
+        val fragment = ImageFragment.newInstance(images?.get(index))
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.addToBackStack(null)
+            ?.replace(R.id.container_main, fragment)
+            ?.commit()
+    }
+
+    private fun initTextView() {
+        with(binding) {
+            ivDetailTitle.text = title.toString()
+            tvDetailDescription.text = description.toString()
+            tvDetailRating.text = rating.toString()
+            tvDetailBrand.text = brand.toString()
+            tvDetailCategory.text = category.toString()
+            tvDetailPrice.text = price.toString()
         }
     }
 

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.stagevk.R
-import com.example.stagevk.databinding.FragmentAllProductsBinding
 import com.example.stagevk.databinding.FragmentErrorNetBinding
 
 class ErrorNetFragment : Fragment() {
@@ -16,7 +15,6 @@ class ErrorNetFragment : Fragment() {
     private val binding: FragmentErrorNetBinding
         get() = _binding ?: throw RuntimeException("FragmentErrorNetBinding is null")
 
-    private val myViwModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

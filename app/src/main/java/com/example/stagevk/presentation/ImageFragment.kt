@@ -60,4 +60,3 @@ class ImageFragment : Fragment() {
         _binding = null
     }
 }
-//Тестовое задание. Стажировка VK. Весна 2024
