@@ -41,4 +41,4 @@
 
   Реализацию можно увидеть на видео:
 
-[<img src="https://i.imgur.com/XVSCF5a.jpg" width="300" height ="100" >](https://youtube.com/shorts/sNQ8c6zHmzM)
+[<img src="https://i.imgur.com/XVSCF5a.jpg" width="300" height ="100" >](https://youtube.com/shorts/w0zYpIYyJf4?feature=share)
