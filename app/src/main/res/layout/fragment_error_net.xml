@@ -22,7 +22,7 @@
         android:id="@+id/tvProblem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Network error"
+        android:text="@string/network_error"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_big"
         android:textStyle="bold"
