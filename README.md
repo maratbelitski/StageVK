@@ -1,6 +1,10 @@
 # StageVK
 
 <p align="center">
+  <img src="https://i.imgur.com/BVWlq4D.png" width="200" height ="200">
+</p>
+
+<p align="center">
    <img src="https://i.imgur.com/WsbWF64.jpg" width="200" height ="400">
    <img src="https://i.imgur.com/4NCvO9C.jpg" width="200" height ="400">
    <img src="https://i.imgur.com/K5KODPr.jpg" width="200" height ="400">
