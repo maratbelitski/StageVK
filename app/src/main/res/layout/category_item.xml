@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
        app:cardCornerRadius="6dp"
-        android:layout_margin="4dp"
+        android:layout_margin="@dimen/padding_min"
         app:cardUseCompatPadding="true"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="4dp"
+                android:padding="@dimen/padding_min"
                 android:textColor="@color/black"
                 tools:text="Category" />
     </androidx.cardview.widget.CardView>

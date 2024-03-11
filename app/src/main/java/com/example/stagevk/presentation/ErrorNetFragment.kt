@@ -1,11 +1,10 @@
 package com.example.stagevk.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import com.example.stagevk.R
 import com.example.stagevk.databinding.FragmentErrorNetBinding
 
@@ -13,7 +12,7 @@ class ErrorNetFragment : Fragment() {
 
     private var _binding: FragmentErrorNetBinding? = null
     private val binding: FragmentErrorNetBinding
-        get() = _binding ?: throw RuntimeException("FragmentErrorNetBinding is null")
+        get() = _binding ?: throw RuntimeException(resources.getString(R.string.fragmentError_is_null))
 
 
     override fun onCreateView(

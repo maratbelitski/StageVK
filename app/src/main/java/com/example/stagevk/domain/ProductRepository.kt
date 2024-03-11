@@ -4,7 +4,7 @@ import com.example.stagevk.domain.entities.ServerResponse
 import io.reactivex.rxjava3.core.Single
 
 interface ProductRepository {
-    fun getAllProducts(product:Int, limit:Int): Single<ServerResponse>?
+    fun getAllProducts(product: Int, limit: Int): Single<ServerResponse>?
     fun getAllCategories(): Single<MutableList<String>>?
-    fun getOneCategory(category:String): Single<ServerResponse>?
+    fun getOneCategory(category: String): Single<ServerResponse>?
 }

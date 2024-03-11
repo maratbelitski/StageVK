@@ -9,8 +9,8 @@ object ProductRepositoryImpl : ProductRepository {
 
     private val api = ApiFactory.apiService
 
-    override fun getAllProducts(product: Int, limit:Int): Single<ServerResponse>? {
-        return api.loadProducts(product,limit)
+    override fun getAllProducts(product: Int, limit: Int): Single<ServerResponse>? {
+        return api.loadProducts(product, limit)
     }
 
     override fun getAllCategories(): Single<MutableList<String>>? {

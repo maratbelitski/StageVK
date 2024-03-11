@@ -1,7 +1,6 @@
 package com.example.stagevk.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -61,6 +60,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = page
 
 
+    //загружаем все товары на главный экран
     fun loadAllProducts() {
         val disposable = getAllProducts(counter, LIMIT_ON_PAGE)
             ?.subscribeOn(Schedulers.io())
@@ -80,6 +80,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         disposable?.let { compositeDisposable.add(it) }
     }
 
+    //загружаем список всех категорий на главный экран
     fun loadAllCategories() {
         val disposable = getAllCategory()
             ?.subscribeOn(Schedulers.io())
@@ -93,7 +94,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
             ?.subscribe({
                 val array = mutableListOf<ListItems>()
-                for (temp in it.listIterator()){
+                for (temp in it.listIterator()) {
                     array.add(Category(temp))
                 }
                 listAllCategories.value = array
@@ -103,6 +104,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         disposable?.let { compositeDisposable.add(it) }
     }
 
+    //по клику отображаем результат запроса по поиску одной категории
     fun loadOneCategoryProducts(category: String) {
         val disposable = getOneCategory(category)
             ?.subscribeOn(Schedulers.io())
@@ -123,6 +125,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
+    //вспомогательные функции счетчиков
     fun incrementCounter() {
         if (!listProducts.value.isNullOrEmpty()) {
             counter += TWENTY

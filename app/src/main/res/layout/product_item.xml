@@ -20,12 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:paddingEnd="4dp">
+            android:paddingEnd="@dimen/padding_min">
 
             <ImageView
                 android:id="@+id/iv_product_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/image_size_min"
+                android:layout_height="@dimen/image_size_min"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/padding_min"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/tv_description"
@@ -48,8 +48,8 @@
                 android:id="@+id/tv_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="@dimen/padding_min"
+                android:layout_marginEnd="@dimen/padding_min"
                 android:gravity="start"
                 android:maxLines="3"
                 android:textColor="@color/black"

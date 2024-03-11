@@ -1,23 +1,20 @@
 package com.example.stagevk.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.example.stagevk.R
 import com.example.stagevk.databinding.FragmentCategoryBinding
-import com.example.stagevk.databinding.FragmentImageBinding
 import com.example.stagevk.presentation.adapter.ProductAdapter
 
 class CategoryFragment : Fragment() {
 
     private var _binding: FragmentCategoryBinding? = null
     private val binding: FragmentCategoryBinding
-        get() = _binding ?: throw RuntimeException("FragmentCategoryBinding is null")
+        get() = _binding ?: throw RuntimeException(resources.getString(R.string.fragmentCategory_is_null))
 
     private val myViwModel: MainViewModel by viewModels()
     private lateinit var myAdapter: ProductAdapter
@@ -56,7 +53,7 @@ class CategoryFragment : Fragment() {
         initViews()
         doListeners()
 
-        myViwModel.loadOneCategoryProducts(categoryName ?: "Unknown")
+        myViwModel.loadOneCategoryProducts(categoryName ?: resources.getString(R.string.unknown))
 
         myViwModel.listOneCategoryLD.observe(viewLifecycleOwner) {
             myAdapter.submitList(it)

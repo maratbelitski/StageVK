@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Single
 
 class GetAllProductsUseCase(private val repository: ProductRepository) {
 
-    operator fun invoke(product: Int, limit:Int): Single<ServerResponse>? {
+    operator fun invoke(product: Int, limit: Int): Single<ServerResponse>? {
         return repository.getAllProducts(product, limit)
     }
 }

@@ -1,11 +1,11 @@
 package com.example.stagevk.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.stagevk.R
 import com.example.stagevk.databinding.FragmentDetailBinding
@@ -14,7 +14,7 @@ class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
     private val binding: FragmentDetailBinding
-        get() = _binding ?: throw RuntimeException("FragmentDetailBinding is null")
+        get() = _binding ?: throw RuntimeException(resources.getString(R.string.fragmentDetail_is_null))
 
     companion object {
         private const val IMAGE = "image"
@@ -25,6 +25,12 @@ class DetailFragment : Fragment() {
         private const val CATEGORY = "category"
         private const val PRICE = "price"
         private const val IMAGES = "images"
+
+        private const val ZERO = 0
+        private const val ONE = 1
+        private const val TWO = 2
+        private const val THREE = 3
+        private const val FOUR = 4
 
         @JvmStatic
         fun newInstance(
@@ -95,26 +101,26 @@ class DetailFragment : Fragment() {
             .load(image)
             .into(binding.ivDetailImage)
 
-        if (images?.size!! == 1) {
-            initImageDetail(binding.imageView2, 0)
+        if (images?.size!! == ONE) {
+            initImageDetail(binding.imageView2, ZERO)
 
-        } else if (images?.size!! == 2) {
+        } else if (images?.size!! == TWO) {
             with(binding) {
-                initImageDetail(imageView2, 0)
-                initImageDetail(imageView3, 1)
+                initImageDetail(imageView2, ZERO)
+                initImageDetail(imageView3, ONE)
             }
-        } else if (images?.size!! == 3) {
+        } else if (images?.size!! == THREE) {
             with(binding) {
-                initImageDetail(imageView2, 0)
-                initImageDetail(imageView3, 1)
-                initImageDetail(imageView4, 2)
+                initImageDetail(imageView2, ZERO)
+                initImageDetail(imageView3, ONE)
+                initImageDetail(imageView4, TWO)
             }
-        } else if (images?.size!! == 4) {
+        } else if (images?.size!! == FOUR) {
             with(binding) {
-                initImageDetail(imageView2, 0)
-                initImageDetail(imageView3, 1)
-                initImageDetail(imageView4, 2)
-                initImageDetail(imageView5, 3)
+                initImageDetail(imageView2, ZERO)
+                initImageDetail(imageView3, ONE)
+                initImageDetail(imageView4, TWO)
+                initImageDetail(imageView5, THREE)
             }
         }
     }
@@ -130,19 +136,19 @@ class DetailFragment : Fragment() {
     private fun doListeners() {
         with(binding) {
             imageView2.setOnClickListener {
-                loadFragment(0)
+                loadFragment(ZERO)
             }
 
             imageView3.setOnClickListener {
-                loadFragment(1)
+                loadFragment(ONE)
             }
 
             imageView4.setOnClickListener {
-                loadFragment(2)
+                loadFragment(TWO)
             }
 
             imageView5.setOnClickListener {
-                loadFragment(3)
+                loadFragment(THREE)
             }
         }
     }

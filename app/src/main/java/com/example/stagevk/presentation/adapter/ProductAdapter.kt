@@ -6,24 +6,28 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.stagevk.domain.entities.Category
 import com.example.stagevk.domain.entities.ListItems
 import com.example.stagevk.domain.entities.Product
-import java.lang.IllegalStateException
 
 class ProductAdapter : ListAdapter<ListItems, ViewHolder>(ProductDiffUtils()) {
+
+    companion object{
+      private const val PRODUCT = 0
+      private const val CATEGORY = 1
+    }
 
     var onClickProduct: ((Product) -> Unit)? = null
     var onClickCategory: ((Category) -> Unit)? = null
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is Product -> 0
-            is Category -> 1
+            is Product -> PRODUCT
+            is Category -> CATEGORY
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return when (viewType) {
-            0 -> ProductHolder.from(parent)
-            1 -> CategoryHolder.from(parent)
+            PRODUCT -> ProductHolder.from(parent)
+            CATEGORY -> CategoryHolder.from(parent)
             else -> throw IllegalStateException()
         }
     }

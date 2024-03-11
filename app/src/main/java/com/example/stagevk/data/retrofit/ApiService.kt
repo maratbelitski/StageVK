@@ -7,10 +7,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-
     @GET("/products")
-    fun loadProducts(@Query("skip") skip: Int, @Query("limit") limit: Int)
-    : Single<ServerResponse>?
+    fun loadProducts(@Query("skip") skip: Int, @Query("limit") limit: Int): Single<ServerResponse>?
 
     @GET("/products/category/{category}")
     fun loadOneCategory(@Path("category") lap: String): Single<ServerResponse>?

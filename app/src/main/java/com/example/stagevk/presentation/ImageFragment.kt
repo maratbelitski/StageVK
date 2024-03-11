@@ -1,10 +1,10 @@
 package com.example.stagevk.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.stagevk.R
 import com.example.stagevk.databinding.FragmentImageBinding
@@ -13,7 +13,7 @@ class ImageFragment : Fragment() {
 
     private var _binding: FragmentImageBinding? = null
     private val binding: FragmentImageBinding
-        get() = _binding ?: throw RuntimeException("FragmentImageBinding is null")
+        get() = _binding ?: throw RuntimeException(resources.getString(R.string.fragmentImage_is_null))
 
 
     companion object {
@@ -39,7 +39,7 @@ class ImageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View {
         _binding = FragmentImageBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -55,6 +55,7 @@ class ImageFragment : Fragment() {
             activity?.supportFragmentManager?.popBackStack()
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

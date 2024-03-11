@@ -1,33 +1,25 @@
 package com.example.stagevk.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.stagevk.R
-import com.example.stagevk.data.retrofit.ApiFactory
 import com.example.stagevk.databinding.FragmentAllProductsBinding
-import com.example.stagevk.domain.entities.Category
-import com.example.stagevk.domain.entities.ListItems
 import com.example.stagevk.presentation.adapter.ProductAdapter
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class AllProductsFragment : Fragment() {
 
     private var _binding: FragmentAllProductsBinding? = null
     private val binding: FragmentAllProductsBinding
-        get() = _binding ?: throw RuntimeException("FragmentMainBinding is null")
+        get() = _binding ?: throw RuntimeException(resources.getString(R.string.fragmentMain_is_null))
 
     private val myViwModel: MainViewModel by viewModels()
     private lateinit var myAdapter: ProductAdapter
-    private lateinit var  myAdapterCategory: ProductAdapter
+    private lateinit var myAdapterCategory: ProductAdapter
 
 
     override fun onCreateView(
@@ -53,7 +45,7 @@ class AllProductsFragment : Fragment() {
             myAdapter.submitList(it)
         }
 
-        myViwModel.listAllCategoriesLD.observe(viewLifecycleOwner){
+        myViwModel.listAllCategoriesLD.observe(viewLifecycleOwner) {
             myAdapterCategory.submitList(it)
         }
 
@@ -62,7 +54,7 @@ class AllProductsFragment : Fragment() {
                 activity?.supportFragmentManager?.beginTransaction()
                     ?.replace(R.id.container_main, ErrorNetFragment())
                     ?.commit()
-                Toast.makeText(activity, "Error of network", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, R.string.error_network, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -85,8 +77,8 @@ class AllProductsFragment : Fragment() {
             myViwModel.incrementPage()
             myViwModel.loadAllProducts()
 
-            if (myAdapter.currentList.isEmpty()){
-                Toast.makeText(activity, "Products not found", Toast.LENGTH_SHORT).show()
+            if (myAdapter.currentList.isEmpty()) {
+                Toast.makeText(activity, R.string.products_not_found, Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -126,7 +118,7 @@ class AllProductsFragment : Fragment() {
         myAdapter = ProductAdapter()
         myAdapterCategory = ProductAdapter()
         binding.recycler.adapter = myAdapter
-        binding.recyclerCategory.adapter =  myAdapterCategory
+        binding.recyclerCategory.adapter = myAdapterCategory
     }
 
     override fun onDestroy() {

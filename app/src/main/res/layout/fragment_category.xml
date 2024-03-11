@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="4dp"
     android:background="@drawable/background_main"
+    android:padding="@dimen/padding_min"
     tools:context=".presentation.AllProductsFragment">
 
 
@@ -15,12 +15,11 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/product_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_category_name" />
-
+        app:layout_constraintTop_toBottomOf="@id/tv_category_name"
+        tools:listitem="@layout/product_item" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -41,10 +40,10 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
-        android:text="laptop"
-        android:padding="4dp"
-        android:textSize="16sp"
+        android:padding="@dimen/padding_min"
+        tools:text="laptop"
         android:textColor="@color/black"
+        android:textSize="@dimen/text_size_normal"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
